@@ -1,5 +1,6 @@
 import { defineQuery } from "next-sanity";
 import type { Metadata, ResolvingMetadata } from "next";
+import { VisualEditing } from "next-sanity";
 import { type PortableTextBlock } from "next-sanity";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -107,6 +108,7 @@ export default async function PostPage({ params }: Props) {
           <MoreStories skip={post._id} limit={2} />
         </Suspense>
       </aside>
+      <VisualEditing />
     </div>
   );
 }

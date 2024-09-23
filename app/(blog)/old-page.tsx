@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { VisualEditing } from "next-sanity";
 
 import Avatar from "./avatar";
 import CoverImage from "./cover-image";
@@ -73,7 +74,7 @@ function HeroPost({
   );
 }
 
-export default async function Page() {
+export default async function OldPage() {
   const [settings, heroPost] = await Promise.all([
     sanityFetch({
       query: settingsQuery,
@@ -83,29 +84,30 @@ export default async function Page() {
 
   return (
     <div className="container mx-auto px-5">
-      <Intro title={settings?.title} description={settings?.description} />
-      {heroPost ? (
-        <HeroPost
-          title={heroPost.title}
-          slug={heroPost.slug}
-          coverImage={heroPost.coverImage}
-          excerpt={heroPost.excerpt}
-          date={heroPost.date}
-          author={heroPost.author}
-        />
-      ) : (
-        <Onboarding />
-      )}
-      {heroPost?._id && (
-        <aside>
-          <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
-            More Stories
-          </h2>
-          <Suspense>
-            <MoreStories skip={heroPost._id} limit={100} />
-          </Suspense>
-        </aside>
-      )}
+      {/*<Intro title={settings?.title} description={settings?.description} />*/}
+      {/*{heroPost ? (*/}
+      {/*  <HeroPost*/}
+      {/*    title={heroPost.title}*/}
+      {/*    slug={heroPost.slug}*/}
+      {/*    coverImage={heroPost.coverImage}*/}
+      {/*    excerpt={heroPost.excerpt}*/}
+      {/*    date={heroPost.date}*/}
+      {/*    author={heroPost.author}*/}
+      {/*  />*/}
+      {/*) : (*/}
+      {/*  <Onboarding />*/}
+      {/*)}*/}
+      {/*{heroPost?._id && (*/}
+      {/*  <aside>*/}
+      {/*    <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">*/}
+      {/*      More Stories*/}
+      {/*    </h2>*/}
+      {/*    <Suspense>*/}
+      {/*      <MoreStories skip={heroPost._id} limit={100} />*/}
+      {/*    </Suspense>*/}
+      {/*  </aside>*/}
+      {/*)}*/}
+      {/*<VisualEditing />*/}
     </div>
   );
 }
