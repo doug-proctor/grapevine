@@ -11,7 +11,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>{accommodation.title}</h1>
+      <h1>{accommodation?.title}</h1>
       <p>Yarr</p>
     </div>
   )

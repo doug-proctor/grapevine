@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <div>
-      <h1>{about.title}</h1>
+      <h1>{about?.title}</h1>
       <p>Yarr!!!</p>
     </div>
   )

@@ -77,9 +77,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
           {/*{draftMode().isEnabled && <AlertBanner />}*/}
           <Suspense>
-            <Header about={about} accommodation={accommodation} />
+            <Header />
             <main>{children}</main>
-            <Footer settings={settings} cookie={cookie} privacy={privacy} />
+            <Footer settings={settings} />
           </Suspense>
 
           {/*{draftMode().isEnabled && <VisualEditing />}*/}
