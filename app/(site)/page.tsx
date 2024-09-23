@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link"
 // import { sanityFetch } from "@/sanity/lib/fetch";
 // import { accommodationQuery, aboutQuery } from "@/sanity/lib/queries";
 

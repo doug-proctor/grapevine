@@ -1,13 +1,8 @@
-import { sanityFetch } from "@/sanity/lib/fetch";
-import { accommodationQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/fetch"
+import { accommodationQuery } from "@/sanity/lib/queries"
 
 export default async function Page() {
-  const accommodation = await sanityFetch({ query: accommodationQuery });
-
-  // const [post, settings] = await Promise.all([
-    // sanityFetch({ query: postQuery, params }),
-    // sanityFetch({ query: settingsQuery }),
-  // ]);
+  const accommodation = await sanityFetch({ query: accommodationQuery })
 
   return (
     <div>

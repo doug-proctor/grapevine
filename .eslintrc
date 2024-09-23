@@ -1,4 +1,14 @@
 {
   "extends": "next/core-web-vitals",
-  "root": true
+  "root": true,
+  "rules": {
+    "quotes": [2, "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "semi": [2, "never"],
+    "no-trailing-spaces": ["error"],
+    "no-tabs": ["error"],
+    "no-multiple-empty-lines": ["error", {
+      "max": 2
+    }],
+    "indent": ["error", 2]
+  }
 }

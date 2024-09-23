@@ -1,10 +1,10 @@
-import { sanityFetch } from "@/sanity/lib/fetch";
-import { cookieQuery } from "@/sanity/lib/queries";
-import { PortableTextBlock } from "next-sanity";
-import PortableText from "../portable-text";
+import { sanityFetch } from "@/sanity/lib/fetch"
+import { cookieQuery } from "@/sanity/lib/queries"
+import { PortableTextBlock } from "next-sanity"
+import PortableText from "../portable-text"
 
 export default async function Page() {
-  const cookie = await sanityFetch({ query: cookieQuery });
+  const cookie = await sanityFetch({ query: cookieQuery })
 
   return (
     <div>

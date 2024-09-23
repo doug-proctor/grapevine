@@ -12,7 +12,7 @@ import {
   PortableText,
   type PortableTextComponents,
   type PortableTextBlock,
-} from "next-sanity";
+} from "next-sanity"
 
 export default function CustomPortableText({
   // className,
@@ -36,14 +36,14 @@ export default function CustomPortableText({
           <a href={value?.href} rel="noreferrer noopener">
             {children}
           </a>
-        );
+        )
       },
     },
-  };
+  }
 
   return (
     // <div className={["prose", className].filter(Boolean).join(" ")}>
     <PortableText components={components} value={value} />
     // </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link"
 import { type Settings } from "@/sanity.types"
 
 export default function Footer({ settings } : { settings: Settings }) {

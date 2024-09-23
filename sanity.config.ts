@@ -1,42 +1,42 @@
-"use client";
+"use client"
 /**
  * This config is used to set up Sanity Studio that's mounted on the `app/(sanity)/studio/[[...tool]]/page.tsx` route
  */
-import { visionTool } from "@sanity/vision";
-import { PluginOptions, defineConfig } from "sanity";
-import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
+import { visionTool } from "@sanity/vision"
+import { PluginOptions, defineConfig } from "sanity"
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash"
 import {
   // presentationTool,
   // defineDocuments,
   // defineLocations,
   type DocumentLocation,
-} from "sanity/presentation";
-import { structureTool } from "sanity/structure";
+} from "sanity/presentation"
+import { structureTool } from "sanity/structure"
 
-import { apiVersion, dataset, projectId, studioUrl } from "@/sanity/lib/api";
-import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
-import { assistWithPresets } from "@/sanity/plugins/assist";
+import { apiVersion, dataset, projectId, studioUrl } from "@/sanity/lib/api"
+import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings"
+import { assistWithPresets } from "@/sanity/plugins/assist"
 
 // Singleton schemas
-import accommodation from "@/sanity/schemas/singletons/accommodation";
-import settings from "@/sanity/schemas/singletons/settings";
-import privacy from "@/sanity/schemas/singletons/privacy";
-import cookie from "@/sanity/schemas/singletons/cookie";
-import about from "@/sanity/schemas/singletons/about";
+import accommodation from "@/sanity/schemas/singletons/accommodation"
+import settings from "@/sanity/schemas/singletons/settings"
+import privacy from "@/sanity/schemas/singletons/privacy"
+import cookie from "@/sanity/schemas/singletons/cookie"
+import about from "@/sanity/schemas/singletons/about"
 
 // Document schemas
-import testimonial from "@/sanity/schemas/documents/testimonial";
-import amenity from "@/sanity/schemas/documents/amenity";
-import author from "@/sanity/schemas/documents/author";
-import post from "@/sanity/schemas/documents/post";
-import faq from "@/sanity/schemas/documents/faq";
+import testimonial from "@/sanity/schemas/documents/testimonial"
+import amenity from "@/sanity/schemas/documents/amenity"
+import author from "@/sanity/schemas/documents/author"
+import post from "@/sanity/schemas/documents/post"
+import faq from "@/sanity/schemas/documents/faq"
 
-import { resolveHref } from "@/sanity/lib/utils";
+import { resolveHref } from "@/sanity/lib/utils"
 
 const homeLocation = {
   title: "Home",
   href: "/",
-} satisfies DocumentLocation;
+} satisfies DocumentLocation
 
 // const SANITY_STUDIO_PREVIEW_URL = (
 //     process.env.SANITY_STUDIO_PREVIEW_URL
@@ -118,4 +118,4 @@ export default defineConfig({
     process.env.NODE_ENV === "development" &&
       visionTool({ defaultApiVersion: apiVersion }),
   ].filter(Boolean) as PluginOptions[],
-});
+})
