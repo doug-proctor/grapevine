@@ -4,16 +4,31 @@ import React from "react"
 import Link from "next/link"
 import Logo from "@/app/components/Logo"
 
-function Nav() {
+function Nav({ closeMenu }: { closeMenu: () => void }) {
+
   return (
-    <div>
-      <ul>
-        <li><Link href="/">Home</Link></li>
-        <li><Link href="accommodation">Accommodation</Link></li>
-        <li><Link href="info-and-amenities">Info and amenities</Link></li>
-        <li><a href="https://google.com">Book now</a></li>
+    <nav className="fixed top-64 bottom-0 left-0 right-0 bg-background">
+      <ul className="text-32 font-bold text-center space-y-24 w-full pt-96">
+        <li>
+          <Link legacyBehavior href="/">
+            <a onClick={closeMenu}>Home</a>
+          </Link>
+        </li>
+        <li>
+          <Link legacyBehavior href="accommodation">
+            <a onClick={closeMenu}>Accommodation</a>
+          </Link>
+        </li>
+        <li>
+          <Link legacyBehavior href="info-and-amenities">
+            <a onClick={closeMenu}>Info and amenities</a>
+          </Link>
+        </li>
+        <li>
+          <a href="https://google.com">Book now</a>
+        </li>
       </ul>
-    </div>
+    </nav>
   )
 }
 
@@ -22,12 +37,12 @@ export default function Header() {
 
   return (
     <header>
-      <section className="flex justify-between px-[16px] py-2 items-center border-b-2">
+      <section className="flex justify-between px-16 items-center min-h-64">
         <Logo />
         <button onClick={() => setIsOpen(!isOpen)}>Menu</button>
       </section>
 
-      {isOpen && <Nav />}
+      {isOpen && <Nav closeMenu={() => setIsOpen(false)} />}
     </header>
   )
 }

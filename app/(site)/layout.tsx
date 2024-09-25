@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 //   // toPlainText,
 //   type PortableTextBlock,
 // } from "next-sanity";
-import { Inter } from "next/font/google"
+import { Poppins } from "next/font/google"
 // import { draftMode } from "next/headers";
 import { Suspense } from "react"
 
@@ -55,10 +55,11 @@ import { layoutQuery } from "@/sanity/lib/queries"
 //   };
 // }
 
-const inter = Inter({
-  variable: "--font-inter",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   display: "swap",
+  weight: "400",
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -66,14 +67,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   // console.log("___________", data)
 
-  const accommodation = data.find(doc => doc._type === "accommodation") as Accommodation
+  // const accommodation = data.find(doc => doc._type === "accommodation") as Accommodation
   const settings = data.find(doc => doc._type === "settings") as Settings
-  const privacy = data.find(doc => doc._type === "privacy") as Privacy
-  const cookie = data.find(doc => doc._type === "cookie") as Cookie
-  const about = data.find(doc => doc._type === "about") as About
+  // const privacy = data.find(doc => doc._type === "privacy") as Privacy
+  // const cookie = data.find(doc => doc._type === "cookie") as Cookie
+  // const about = data.find(doc => doc._type === "about") as About
 
   return (
-    <html lang="en" className={`${inter.variable}`}>
+    <html lang="en" className={`${poppins.variable} text-18`}>
       <body>
         {/*{draftMode().isEnabled && <AlertBanner />}*/}
         <Suspense>
