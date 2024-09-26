@@ -7,7 +7,7 @@ import Logo from "@/app/components/Logo"
 function Nav({ closeMenu }: { closeMenu: () => void }) {
 
   return (
-    <nav className="fixed top-64 bottom-0 left-0 right-0 bg-background">
+    <nav className="fixed top-64 bottom-0 left-0 right-0 bg-background z-50">
       <ul className="text-32 font-bold text-center space-y-24 w-full pt-96">
         <li>
           <Link legacyBehavior href="/">

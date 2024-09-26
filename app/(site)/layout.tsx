@@ -57,9 +57,9 @@ import { layoutQuery } from "@/sanity/lib/queries"
 
 const poppins = Poppins({
   variable: "--font-poppins",
+  weight: ["400", "500", "800"],
   subsets: ["latin"],
   display: "swap",
-  weight: "400",
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -74,7 +74,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // const about = data.find(doc => doc._type === "about") as About
 
   return (
-    <html lang="en" className={`${poppins.variable} text-18`}>
+    <html lang="en" className={`${poppins.variable} text-18 text-content`}>
       <body>
         {/*{draftMode().isEnabled && <AlertBanner />}*/}
         <Suspense>

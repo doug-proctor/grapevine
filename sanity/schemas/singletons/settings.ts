@@ -1,5 +1,5 @@
-import { CogIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { CogIcon } from "@sanity/icons"
+import { defineArrayMember, defineField, defineType } from "sanity"
 
 export default defineType({
   name: "settings",
@@ -10,13 +10,6 @@ export default defineType({
     defineField({
       name: "name",
       title: "Hostel name",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "tagline",
-      title: "Tagline",
-      description: "This appears in the hero area of the homepage",
       type: "string",
       validation: (rule) => rule.required(),
     }),
@@ -132,7 +125,7 @@ export default defineType({
     prepare() {
       return {
         title: "Settings",
-      };
+      }
     },
   },
-});
+})

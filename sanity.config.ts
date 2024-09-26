@@ -23,6 +23,7 @@ import settings from "@/sanity/schemas/singletons/settings"
 import privacy from "@/sanity/schemas/singletons/privacy"
 import cookie from "@/sanity/schemas/singletons/cookie"
 import about from "@/sanity/schemas/singletons/about"
+import home from "@/sanity/schemas/singletons/home"
 
 // Document schemas
 import testimonial from "@/sanity/schemas/documents/testimonial"
@@ -53,6 +54,7 @@ export default defineConfig({
       privacy,
       cookie,
       about,
+      home,
 
       // Documents
       testimonial,
@@ -101,13 +103,14 @@ export default defineConfig({
       structure: pageStructure([
         settings,
         accommodation,
+        home,
         about,
         privacy,
         cookie,
       ])
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([settings.name, cookie.name, privacy.name, accommodation.name, about.name]),
+    singletonPlugin([settings.name, cookie.name, privacy.name, accommodation.name, about.name, home.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Sets up AI Assist with preset prompts

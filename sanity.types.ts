@@ -162,7 +162,18 @@ export type Amenity = {
   promoted?: boolean;
   name?: string;
   description?: string;
-  icon?: string;
+  icon?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   picture?: {
     asset?: {
       _ref: string;
@@ -185,6 +196,138 @@ export type Testimonial = {
   _rev: string;
   name?: string;
   comment?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
+export type Home = {
+  _id: string;
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
+export type About = {
+  _id: string;
+  _type: "about";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
+export type Cookie = {
+  _id: string;
+  _type: "cookie";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type Privacy = {
+  _id: string;
+  _type: "privacy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type Settings = {
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  ga_tracking_id?: string;
+  channel_manager_id?: string;
+  meta_description?: string;
+};
+
+export type Accommodation = {
+  _id: string;
+  _type: "accommodation";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
   picture?: {
     asset?: {
       _ref: string;
@@ -254,94 +397,6 @@ export type SanityImageMetadata = {
   blurHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
-};
-
-export type About = {
-  _id: string;
-  _type: "about";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  description?: string;
-};
-
-export type Cookie = {
-  _id: string;
-  _type: "cookie";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
-export type Privacy = {
-  _id: string;
-  _type: "privacy";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
-export type Settings = {
-  _id: string;
-  _type: "settings";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  tagline?: string;
-  phone?: string;
-  email?: string;
-  address?: string;
-  ga_tracking_id?: string;
-  channel_manager_id?: string;
-  meta_description?: string;
-};
-
-export type Accommodation = {
-  _id: string;
-  _type: "accommodation";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  description?: string;
 };
 
 export type SanityAssistInstructionTask = {
@@ -465,7 +520,7 @@ export type SanityAssistSchemaTypeField = {
   } & SanityAssistInstruction>;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Faq | Post | Slug | Author | Amenity | Testimonial | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | About | Cookie | Privacy | Settings | Accommodation | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Faq | Post | Slug | Author | Amenity | Testimonial | Home | About | Cookie | Privacy | Settings | Accommodation | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: layoutQuery
@@ -478,6 +533,18 @@ export type LayoutQueryResult = Array<{
   _rev: string;
   title?: string;
   description?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 } | {
   _id: string;
   _type: "accommodation";
@@ -486,6 +553,18 @@ export type LayoutQueryResult = Array<{
   _rev: string;
   title?: string;
   description?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 } | {
   _id: string;
   _type: "cookie";
@@ -541,7 +620,6 @@ export type LayoutQueryResult = Array<{
   _updatedAt: string;
   _rev: string;
   name?: string;
-  tagline?: string;
   phone?: string;
   email?: string;
   address?: string;
@@ -559,7 +637,55 @@ export type AccommodationQueryResult = {
   _rev: string;
   title?: string;
   description?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 } | null;
+// Variable: amenitiesQuery
+// Query: *[_type in ["amenity"]][0..5]
+export type AmenitiesQueryResult = Array<{
+  _id: string;
+  _type: "amenity";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  promoted?: boolean;
+  name?: string;
+  description?: string;
+  icon?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+}>;
 // Variable: privacyQuery
 // Query: *[_type in ["privacy"]][0]
 export type PrivacyQueryResult = {
@@ -624,6 +750,40 @@ export type AboutQueryResult = {
   _rev: string;
   title?: string;
   description?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+} | null;
+// Variable: homeQuery
+// Query: *[_type in ["home"]][0]
+export type HomeQueryResult = {
+  _id: string;
+  _type: "home";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 } | null;
 
 // Query TypeMap
@@ -632,8 +792,10 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type in [\"settings\", \"cookie\", \"privacy\", \"accommodation\", \"about\"]]": LayoutQueryResult;
     "*[_type in [\"accommodation\"]][0]": AccommodationQueryResult;
+    "*[_type in [\"amenity\"]][0..5]": AmenitiesQueryResult;
     "*[_type in [\"privacy\"]][0]": PrivacyQueryResult;
     "*[_type in [\"cookie\"]][0]": CookieQueryResult;
     "*[_type in [\"about\"]][0]": AboutQueryResult;
+    "*[_type in [\"home\"]][0]": HomeQueryResult;
   }
 }
