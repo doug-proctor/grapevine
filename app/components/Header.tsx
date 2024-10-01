@@ -11,21 +11,21 @@ function Nav({ closeMenu }: { closeMenu: () => void }) {
       <ul className="text-32 font-bold text-center space-y-24 w-full pt-96">
         <li>
           <Link legacyBehavior href="/">
-            <a onClick={closeMenu}>Home</a>
+            <a className="inline-block text-accent hover:text-accent-hover transform hover:scale-175" onClick={closeMenu}>Home</a>
           </Link>
         </li>
         <li>
           <Link legacyBehavior href="accommodation">
-            <a onClick={closeMenu}>Accommodation</a>
+            <a className="inline-block text-accent hover:text-accent-hover transform hover:scale-175" onClick={closeMenu}>Accommodation</a>
           </Link>
         </li>
         <li>
           <Link legacyBehavior href="info-and-amenities">
-            <a onClick={closeMenu}>Info and amenities</a>
+            <a className="inline-block text-accent hover:text-accent-hover transform hover:scale-175" onClick={closeMenu}>Info and amenities</a>
           </Link>
         </li>
         <li>
-          <a href="https://google.com">Book now</a>
+          <a className="inline-block text-accent hover:text-accent-hover transform hover:scale-175" href="https://google.com">Book now</a>
         </li>
       </ul>
     </nav>

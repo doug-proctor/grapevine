@@ -12,8 +12,8 @@ export default {
     },
     colors: {
       accent: {
-        DEFAULT: "#0F3A7E",
-        hover: "#0a2b67",
+        DEFAULT: "#7E0747",
+        hover: "#5e0435",
       },
       content: {
         DEFAULT: "#333333",
@@ -58,6 +58,9 @@ export default {
     borderRadius: {
       4: "4px",
       full: "100%",
+    },
+    scale: {
+      "175": "1.75",
     },
     extend: {
       fontFamily: {

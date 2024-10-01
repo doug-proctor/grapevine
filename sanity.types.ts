@@ -162,18 +162,7 @@ export type Amenity = {
   promoted?: boolean;
   name?: string;
   description?: string;
-  icon?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
+  svg_icon?: string;
   picture?: {
     asset?: {
       _ref: string;
@@ -315,7 +304,10 @@ export type Settings = {
   phone?: string;
   email?: string;
   address?: string;
+  instagram_url?: string;
+  facebook_url?: string;
   ga_tracking_id?: string;
+  google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
 };
@@ -623,7 +615,10 @@ export type LayoutQueryResult = Array<{
   phone?: string;
   email?: string;
   address?: string;
+  instagram_url?: string;
+  facebook_url?: string;
   ga_tracking_id?: string;
+  google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
 }>;
@@ -670,23 +665,31 @@ export type TestimonialsQueryResult = Array<{
   comment: string | null;
 }>;
 // Variable: amenitiesQuery
-// Query: *[_type in ["amenity"]][0..5]{_id, name, icon}
+// Query: *[_type in ["amenity"]][0..5]{_id, name, svg_icon}
 export type AmenitiesQueryResult = Array<{
   _id: string;
   name: string | null;
-  icon: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
+  svg_icon: string | null;
 }>;
+// Variable: settingsQuery
+// Query: *[_type in ["settings"]][0]
+export type SettingsQueryResult = {
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  instagram_url?: string;
+  facebook_url?: string;
+  ga_tracking_id?: string;
+  google_maps_api_key?: string;
+  channel_manager_id?: string;
+  meta_description?: string;
+} | null;
 // Variable: privacyQuery
 // Query: *[_type in ["privacy"]][0]
 export type PrivacyQueryResult = {
@@ -794,7 +797,8 @@ declare module "@sanity/client" {
     "*[_type in [\"settings\", \"cookie\", \"privacy\", \"accommodation\", \"about\"]]": LayoutQueryResult;
     "*[_type in [\"accommodation\"]][0]": AccommodationQueryResult;
     "*[_type in [\"testimonial\"]]{_id, name, picture, comment}": TestimonialsQueryResult;
-    "*[_type in [\"amenity\"]][0..5]{_id, name, icon}": AmenitiesQueryResult;
+    "*[_type in [\"amenity\"]][0..5]{_id, name, svg_icon}": AmenitiesQueryResult;
+    "*[_type in [\"settings\"]][0]": SettingsQueryResult;
     "*[_type in [\"privacy\"]][0]": PrivacyQueryResult;
     "*[_type in [\"cookie\"]][0]": CookieQueryResult;
     "*[_type in [\"about\"]][0]": AboutQueryResult;

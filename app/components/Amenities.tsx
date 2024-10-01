@@ -1,16 +1,11 @@
-import React from "react"
-import Image from "next/image"
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { amenitiesQuery } from "@/sanity/lib/queries"
-import { urlForImage } from "@/sanity/lib/utils"
 import { type Amenity } from "@/sanity.types"
 
-const Amenity = ({ image, name, className }: { image?: any, name?: string, className: string }) => {
-  const src = urlForImage(image)?.height(80).width(80).url() as string
-
+const Amenity = ({ svg, name, className }: { svg?: string, name?: string, className: string }) => {
   return (
     <div className={`${className} text-center`}>
-      <Image src={src} width={80} height={80} alt={image?.alt} className="mx-auto" />
+      <div className="inline-block scale-105 mb-8" dangerouslySetInnerHTML={{ __html: svg! }} />
       <div>{name}</div>
     </div>
   )
@@ -22,7 +17,7 @@ export default async function Amenities() {
   return (
     <section className="px-16 py-32 md:py-64 lg:px-32 bg-background-secondary grid gap-32 md:gap-64 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
       {amenities.map(amenity => (
-        <Amenity key={amenity._id} className="flex-1" name={amenity.name} image={amenity.icon} />
+        <Amenity key={amenity._id} className="flex-1" name={amenity.name} svg={amenity.svg_icon} />
       ))}
     </section>
   )

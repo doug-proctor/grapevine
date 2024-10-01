@@ -10,7 +10,6 @@ type Props = {
 
 export default function Link({ size, children, href, externalHref }: Props) {
   const baseClassNames = "inline-block bg-accent hover:bg-accent-hover text-content-inverted px-16 py-12 text-16 leading-24 rounded-4 font-medium transition-colors"
-
   const sizeClassNames = size === "large" ? "px-24 py-16 text-16 leading-28" : "px-16 py-12 text-16 leading-24"
 
   if (href) {

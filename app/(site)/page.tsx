@@ -1,9 +1,11 @@
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { accommodationQuery, aboutQuery, homeQuery } from "@/sanity/lib/queries"
-import MediaItem from "@/app/components/MediaItem"
-import Amenities from "@/app/components/Amenities"
+
 import Testimonials from "@/app/components/Testimonials"
 import PageHeader from "@/app/components/PageHeader"
+import Amenities from "@/app/components/Amenities"
+import MediaItem from "@/app/components/MediaItem"
+import Contact from "@/app/components/Contact"
 
 export default async function Page() {
   const accommodation = await sanityFetch({ query: accommodationQuery })
@@ -38,7 +40,7 @@ export default async function Page() {
 
       <Testimonials />
 
-      {/* Find us */}
+      <Contact />
     </>
   )
 }
