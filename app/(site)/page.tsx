@@ -6,6 +6,7 @@ import PageHeader from "@/app/components/PageHeader"
 import Amenities from "@/app/components/Amenities"
 import MediaItem from "@/app/components/MediaItem"
 import Contact from "@/app/components/Contact"
+import Faqs from "@/app/components/Faqs"
 
 export default async function Page() {
   const accommodation = await sanityFetch({ query: accommodationQuery })
@@ -15,8 +16,9 @@ export default async function Page() {
   return (
     <>
       <PageHeader
-        title={home?.title}
         image={home?.picture}
+        title={home?.title}
+        showRoomCta={true}
       />
 
       <MediaItem
@@ -36,9 +38,9 @@ export default async function Page() {
 
       <Amenities />
 
-      {/* Gallery */}
-
       <Testimonials />
+
+      <Faqs />
 
       <Contact />
     </>

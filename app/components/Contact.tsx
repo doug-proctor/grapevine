@@ -50,7 +50,7 @@ export default async function Amenities() {
 
   return (
     <MediaItem title="Connect with us" mapApiKey={settings.google_maps_api_key}>
-      <div className="mt-32 space-y-24">
+      <div className="mt-32 space-y-16">
         <div>
           <Icon icon="phone" className="inline relative -top-[2px] mr-[6px]"/>
           {settings.phone}

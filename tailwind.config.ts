@@ -15,6 +15,9 @@ export default {
         DEFAULT: "#7E0747",
         hover: "#5e0435",
       },
+      award: {
+        DEFAULT: "#FFB800",
+      },
       content: {
         DEFAULT: "#333333",
         secondary: "#6E6E6E",
@@ -57,6 +60,8 @@ export default {
     },
     borderRadius: {
       4: "4px",
+      24: "24px",
+      32: "32px",
       full: "100%",
     },
     scale: {

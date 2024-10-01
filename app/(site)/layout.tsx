@@ -1,7 +1,7 @@
 import "../globals.css"
 
 import { type Settings, type Cookie, type Privacy, type Accommodation, type About } from "@/sanity.types"
-
+import ReactGA from "react-ga4"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 // import type { Metadata } from "next";
 // import {
@@ -70,13 +70,9 @@ const poppins = Poppins({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const data = await sanityFetch({ query: layoutQuery })
 
-  // console.log("___________", data)
-
-  // const accommodation = data.find(doc => doc._type === "accommodation") as Accommodation
   const settings = data.find(doc => doc._type === "settings") as Settings
-  // const privacy = data.find(doc => doc._type === "privacy") as Privacy
-  // const cookie = data.find(doc => doc._type === "cookie") as Cookie
-  // const about = data.find(doc => doc._type === "about") as About
+
+  ReactGA.initialize(settings.ga_tracking_id!)
 
   return (
     <html lang="en" className={`${poppins.variable} text-18 text-content`}>

@@ -5,21 +5,39 @@ import { testimonialsQuery } from "@/sanity/lib/queries"
 import { urlForImage } from "@/sanity/lib/utils"
 import { type Testimonial } from "@/sanity.types"
 
+const Star = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+  stroke="currentColor" stroke-width="1" stroke-linecap="round"
+  className="text-award inline lucide lucide-star">
+  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+</svg>
+
+const Stars = () => <><Star /><Star /><Star /><Star /><Star /></>
+
 type Props = {
   image?: any,
   name?: string,
   comment?: string,
-  className: string,
 }
 
-const Testimonial = ({ image, name, comment, className }: Props) => {
+const Testimonial = ({image, name, comment}: Props) => {
   const src = urlForImage(image)?.height(188).width(188).url() as string
 
   return (
-    <div className={`${className} text-center text-16 md:px-16 space-y-8 max-w-[500px] mx-auto`}>
-      <Image src={src} width={94} height={94} alt={image?.alt} className="mx-auto rounded-full" />
-      <div>{comment}</div>
-      <div className="text-content-secondary italic">{name}</div>
+    <div className="text-16 p-16 sm:p-24 lg:p-32 space-y-8 max-w-[500px] mx-auto bg-background rounded-24">
+      <div className="flex items-center">
+        <div>
+          <Image src={src} width={94} height={94} alt={image?.alt} className="mx-auto rounded-full" />
+        </div>
+        <div className="flex-1 ml-8 font-medium text-18">
+          <div>
+            {name}
+          </div>
+          <div>
+            <Stars />
+          </div>
+        </div>
+      </div>
+      <div className="xtext-center">{comment}</div>
     </div>
   )
 }
@@ -28,14 +46,13 @@ export default async function Amenities() {
   const testimonials = await sanityFetch({ query: testimonialsQuery }) as Testimonial[]
 
   return (
-    <section className="px-16 py-32 md:py-64 space-y-32 sm:space-y-16 md:space-y-0 bg-background-primary grid gap-16 md:gap-24 grid-cols-1 md:grid-cols-2 min-[800px]:grid-cols-3">
+    <section className="px-16 py-32 md:py-64 space-y-32 sm:space-y-16 md:space-y-0 bg-accent grid gap-16 md:gap-24 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {testimonials.map(testimonial => (
         <Testimonial
           comment={testimonial.comment}
           image={testimonial.picture}
           name={testimonial.name}
           key={testimonial._id}
-          className="flex-1"
         />
       ))}
     </section>

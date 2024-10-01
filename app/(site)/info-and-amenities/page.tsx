@@ -1,30 +1,38 @@
-// import {sanityFetch} from "@/sanity/lib/fetch";
-// import {postQuery, settingsQuery} from "@/sanity/lib/queries";
-// import {notFound} from "next/navigation";
-
+import { aboutQuery, amenitiesFullQuery } from "@/sanity/lib/queries"
 import { sanityFetch } from "@/sanity/lib/fetch"
-import { aboutQuery } from "@/sanity/lib/queries"
+import { type Amenity } from "@/sanity.types"
+import PageHeader from "@/app/components/PageHeader"
+import MediaItem from "@/app/components/MediaItem"
+import Amenities from "@/app/components/Amenities"
+import Testimonials from "@/app/components/Testimonials"
+import Faqs from "@/app/components/Faqs"
+import Contact from "@/app/components/Contact"
 
-type Props = {
-  params: { slug: string };
-};
-
-export default async function Page({ params }: Props) {
+export default async function Page() {
   const about = await sanityFetch({ query: aboutQuery })
-
-  // const [post, settings] = await Promise.all([
-  // sanityFetch({ query: postQuery, params }),
-  // sanityFetch({ query: settingsQuery }),
-  // ]);
-
-  // if (!post?._id) {
-  //   return notFound();
-  // }
+  const amenities = await sanityFetch({ query: amenitiesFullQuery }) as Amenity[]
 
   return (
-    <div>
-      <h1>{about?.title}</h1>
-      <p>Yarr!!!</p>
-    </div>
+    <>
+      <PageHeader image={about?.picture} title={about?.title} />
+
+      {amenities.map((amenity, index) => (
+        <MediaItem
+          description={amenity.description}
+          reverse={index % 2 !== 0}
+          image={amenity.picture}
+          title={amenity.name}
+          key={amenity._id}
+        />
+      ))}
+
+      <Amenities />
+
+      <Testimonials />
+
+      <Faqs />
+
+      <Contact />
+    </>
   )
 }

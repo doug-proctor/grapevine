@@ -30,6 +30,7 @@ import testimonial from "@/sanity/schemas/documents/testimonial"
 import amenity from "@/sanity/schemas/documents/amenity"
 import author from "@/sanity/schemas/documents/author"
 import post from "@/sanity/schemas/documents/post"
+import room from "@/sanity/schemas/documents/room"
 import faq from "@/sanity/schemas/documents/faq"
 
 import { resolveHref } from "@/sanity/lib/utils"
@@ -60,6 +61,7 @@ export default defineConfig({
       testimonial,
       amenity,
       author,
+      room,
       post,
       faq,
     ],

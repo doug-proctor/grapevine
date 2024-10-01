@@ -7,16 +7,17 @@ import { urlForImage } from "@/sanity/lib/utils"
 type Props = {
   image?: any,
   title?: string,
+  showRoomCta?: boolean,
 }
 
-export default function Header({ title, image } : Props) {
+export default function Header({ title, image, showRoomCta } : Props) {
   const src = urlForImage(image)?.height(1000).width(2000).url() as string
 
   return (
     <header className="overflow-hidden relative">
       <div className="py-80 md:py-112 lg:py-128 px-16 md:px-32 lg:px-48 mx-auto text-center text-content-inverted">
-        <Heading level="h1" className="mb-32">Cozy hostel in the heart of Dingle</Heading>
-        <Link href="/accommodation" size="large">View rooms</Link>
+        <Heading level="h1" className="mb-32">{title}</Heading>
+        {showRoomCta && <Link href="/accommodation" size="large">View rooms</Link>}
       </div>
 
       <Image

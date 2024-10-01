@@ -1,8 +1,9 @@
+// import React from "react"
 import Image from "next/image"
 import Heading from "@/app/components/Heading"
 import { urlForImage } from "@/sanity/lib/utils"
 import Link from "@/app/components/Link"
-import React from "react"
+import BookingLink from "@/app/components/BookingLink"
 import GoogleMap from "@/app/components/GoogleMap"
 
 type Props = {
@@ -11,11 +12,12 @@ type Props = {
   reverse?: boolean;
   mapApiKey?: string;
   description?: string;
+  showBookingCta?: boolean;
   children?: React.ReactNode;
   button?: { href: string; text: string };
 }
 
-export default function MediaItem({ children, mapApiKey, title, description, image, reverse, button }: Props) {
+export default function MediaItem({ children, mapApiKey, title, description, image, reverse, showBookingCta, button }: Props) {
   const src = urlForImage(image)?.height(1000).width(2000).url() as string
 
   return (
@@ -35,12 +37,13 @@ export default function MediaItem({ children, mapApiKey, title, description, ima
         )}
       </div>
       <div className="w-full">
-        <div className="my-64 md:my-80 lg:my-96 mx-auto px-16 md:px-32 lg:px-64 text-center">
+        <div className="my-64 md:my-80 lg:my-96 mx-auto px-16 md:px-32 lg:px-64 text-center min-h-[250px]">
           {title && <Heading level="h2" className="mb-8">{title}</Heading>}
           {children ? children : (
             <>
               {description && <div className="mb-24 max-w-[500px] mx-auto">{description}</div>}
               {button && <Link href={button.href}>{button.text}</Link>}
+              {showBookingCta && <BookingLink />}
             </>
           )}
         </div>

@@ -1,33 +1,21 @@
-import { CheckmarkIcon } from "@sanity/icons"
+import { AddDocumentIcon } from "@sanity/icons"
 import { defineField, defineType } from "sanity"
 
 export default defineType({
-  name: "amenity",
-  title: "Amenity",
-  icon: CheckmarkIcon,
+  name: "room",
+  title: "Room",
+  icon: AddDocumentIcon,
   type: "document",
   fields: [
     defineField({
-      name: "promoted",
-      title: "Promoted",
-      type: "boolean",
-      initialValue: false,
-    }),
-    defineField({
-      name: "name",
-      title: "Name",
+      name: "type",
+      title: "Room type",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "svg_icon",
-      title: "SVG icon",
       type: "string",
       validation: (rule) => rule.required(),
     }),
@@ -57,14 +45,7 @@ export default defineType({
           imageDescriptionField: "alt",
         },
       },
-      // validation: rule => rule.custom((_, context) => {
-      //   if (context.document?.promoted) {
-      //     return {
-      //       message: "An image is required because the amenity is promoted to the Info & Amenities page",
-      //     }
-      //   }
-      //   return true
-      // })
+      validation: (rule) => rule.required(),
     }),
   ],
 })

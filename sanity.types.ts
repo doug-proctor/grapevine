@@ -132,6 +132,28 @@ export type Slug = {
   source?: string;
 };
 
+export type Room = {
+  _id: string;
+  _type: "room";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  type?: string;
+  description?: string;
+  picture?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
 export type Author = {
   _id: string;
   _type: "author";
@@ -512,7 +534,7 @@ export type SanityAssistSchemaTypeField = {
   } & SanityAssistInstruction>;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Faq | Post | Slug | Author | Amenity | Testimonial | Home | About | Cookie | Privacy | Settings | Accommodation | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Faq | Post | Slug | Room | Author | Amenity | Testimonial | Home | About | Cookie | Privacy | Settings | Accommodation | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: layoutQuery
@@ -767,6 +789,32 @@ export type AboutQueryResult = {
     _type: "image";
   };
 } | null;
+// Variable: faqsQuery
+// Query: *[_type in ["faq"]]{_id, question, answer}
+export type FaqsQueryResult = Array<{
+  _id: string;
+  question: string | null;
+  answer: string | null;
+}>;
+// Variable: roomQuery
+// Query: *[_type in ["room"]]{_id, type, description, picture}
+export type RoomQueryResult = Array<{
+  _id: string;
+  type: string | null;
+  description: string | null;
+  picture: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+}>;
 // Variable: homeQuery
 // Query: *[_type in ["home"]][0]
 export type HomeQueryResult = {
@@ -802,6 +850,8 @@ declare module "@sanity/client" {
     "*[_type in [\"privacy\"]][0]": PrivacyQueryResult;
     "*[_type in [\"cookie\"]][0]": CookieQueryResult;
     "*[_type in [\"about\"]][0]": AboutQueryResult;
+    "*[_type in [\"faq\"]]{_id, question, answer}": FaqsQueryResult;
+    "*[_type in [\"room\"]]{_id, type, description, picture}": RoomQueryResult;
     "*[_type in [\"home\"]][0]": HomeQueryResult;
   }
 }
