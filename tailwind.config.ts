@@ -57,6 +57,7 @@ export default {
     },
     borderRadius: {
       4: "4px",
+      full: "100%",
     },
     extend: {
       fontFamily: {

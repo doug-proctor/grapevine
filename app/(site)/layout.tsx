@@ -13,8 +13,9 @@ import { Poppins } from "next/font/google"
 // import { draftMode } from "next/headers";
 import { Suspense } from "react"
 
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import Header from "@/app/components/Header"
+import Footer from "@/app/components/Footer"
+import DevTool from "@/app/components/DevTool"
 
 // import AlertBanner from "./alert-banner";
 // import PortableText from "./portable-text";
@@ -85,6 +86,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
         {/*{draftMode().isEnabled && <VisualEditing />}*/}
         <SpeedInsights />
+        {process.env.NODE_ENV === "development" && <DevTool />}
       </body>
     </html>
   )

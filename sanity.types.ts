@@ -650,18 +650,31 @@ export type AccommodationQueryResult = {
     _type: "image";
   };
 } | null;
+// Variable: testimonialsQuery
+// Query: *[_type in ["testimonial"]]{_id, name, picture, comment}
+export type TestimonialsQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  picture: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  comment: string | null;
+}>;
 // Variable: amenitiesQuery
-// Query: *[_type in ["amenity"]][0..5]
+// Query: *[_type in ["amenity"]][0..5]{_id, name, icon}
 export type AmenitiesQueryResult = Array<{
   _id: string;
-  _type: "amenity";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  promoted?: boolean;
-  name?: string;
-  description?: string;
-  icon?: {
+  name: string | null;
+  icon: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -672,19 +685,7 @@ export type AmenitiesQueryResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  };
-  picture?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
+  } | null;
 }>;
 // Variable: privacyQuery
 // Query: *[_type in ["privacy"]][0]
@@ -792,7 +793,8 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type in [\"settings\", \"cookie\", \"privacy\", \"accommodation\", \"about\"]]": LayoutQueryResult;
     "*[_type in [\"accommodation\"]][0]": AccommodationQueryResult;
-    "*[_type in [\"amenity\"]][0..5]": AmenitiesQueryResult;
+    "*[_type in [\"testimonial\"]]{_id, name, picture, comment}": TestimonialsQueryResult;
+    "*[_type in [\"amenity\"]][0..5]{_id, name, icon}": AmenitiesQueryResult;
     "*[_type in [\"privacy\"]][0]": PrivacyQueryResult;
     "*[_type in [\"cookie\"]][0]": CookieQueryResult;
     "*[_type in [\"about\"]][0]": AboutQueryResult;

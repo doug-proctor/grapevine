@@ -17,10 +17,10 @@ const Amenity = ({ image, name, className }: { image?: any, name?: string, class
 }
 
 export default async function Amenities() {
-  const amenities: Amenity[] = await sanityFetch({ query: amenitiesQuery })
+  const amenities = await sanityFetch({ query: amenitiesQuery }) as Amenity[]
 
   return (
-    <section className="px-16 py-32 md:py-64 bg-background-secondary grid gap-16 grid-cols-2 min-[570px]:grid-cols-3 min-[1000px]:grid-cols-6">
+    <section className="px-16 py-32 md:py-64 lg:px-32 bg-background-secondary grid gap-32 md:gap-64 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
       {amenities.map(amenity => (
         <Amenity key={amenity._id} className="flex-1" name={amenity.name} image={amenity.icon} />
       ))}

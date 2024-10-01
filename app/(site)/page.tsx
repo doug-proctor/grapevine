@@ -2,6 +2,7 @@ import { sanityFetch } from "@/sanity/lib/fetch"
 import { accommodationQuery, aboutQuery, homeQuery } from "@/sanity/lib/queries"
 import MediaItem from "@/app/components/MediaItem"
 import Amenities from "@/app/components/Amenities"
+import Testimonials from "@/app/components/Testimonials"
 import PageHeader from "@/app/components/PageHeader"
 
 export default async function Page() {
@@ -35,7 +36,7 @@ export default async function Page() {
 
       {/* Gallery */}
 
-      {/* Testimonials */}
+      <Testimonials />
 
       {/* Find us */}
     </>
