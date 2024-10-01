@@ -76,7 +76,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en" className={`${poppins.variable} text-18 text-content`}>
-      <body>
+      <body className="md:mt-64">
         {/*{draftMode().isEnabled && <AlertBanner />}*/}
         <Suspense>
           <Header />

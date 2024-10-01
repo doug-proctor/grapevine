@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 .external-css-component_site-nav {
+    animation: fadeIn;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+
     & li {
         animation: fadeIn;
         animation-duration: 0.2s;
