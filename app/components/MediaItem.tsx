@@ -39,7 +39,7 @@ export default function MediaItem({ children, mapApiKey, title, description, ima
           {title && <Heading level="h2" className="mb-8">{title}</Heading>}
           {children ? children : (
             <>
-              {description && <div className="mb-24">{description}</div>}
+              {description && <div className="mb-24 max-w-[500px] mx-auto">{description}</div>}
               {button && <Link href={button.href}>{button.text}</Link>}
             </>
           )}

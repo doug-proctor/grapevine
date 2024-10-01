@@ -39,7 +39,7 @@ export default function Header() {
     <header className="bg-background md:fixed top-0 left-0 right-0 z-50">
       <section className="flex justify-between px-16 items-center min-h-64">
         <Logo />
-        <button onClick={() => setIsOpen(!isOpen)}>Menu</button>
+        <button className="font-medium text-accent hover:text-accent-hover" onClick={() => setIsOpen(!isOpen)}>Menu</button>
       </section>
 
       {isOpen && <Nav closeMenu={() => setIsOpen(false)} />}

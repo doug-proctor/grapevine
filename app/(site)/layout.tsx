@@ -58,7 +58,11 @@ import { layoutQuery } from "@/sanity/lib/queries"
 
 const poppins = Poppins({
   variable: "--font-poppins",
-  weight: ["400", "500", "800"],
+  weight: [
+    "400", // normal
+    "500", // medium
+    "800"  // bold
+  ],
   subsets: ["latin"],
   display: "swap",
 })
