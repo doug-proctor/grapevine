@@ -332,6 +332,19 @@ export type Settings = {
   google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
+  tab_title?: string;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 };
 
 export type Accommodation = {
@@ -643,6 +656,19 @@ export type LayoutQueryResult = Array<{
   google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
+  tab_title?: string;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 }>;
 // Variable: accommodationQuery
 // Query: *[_type in ["accommodation"]][0]
@@ -730,6 +756,19 @@ export type SettingsQueryResult = {
   google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
+  tab_title?: string;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
 } | null;
 // Variable: privacyQuery
 // Query: *[_type in ["privacy"]][0]

@@ -1,14 +1,14 @@
 import "../globals.css"
 
-import { type Settings, type Cookie, type Privacy, type Accommodation, type About } from "@/sanity.types"
+import { type Settings } from "@/sanity.types"
 import ReactGA from "react-ga4"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-// import type { Metadata } from "next";
-// import {
-//   // VisualEditing,
-//   // toPlainText,
-//   type PortableTextBlock,
-// } from "next-sanity";
+import type { Metadata } from "next"
+import {
+  // VisualEditing,
+  toPlainText,
+  // type PortableTextBlock,
+} from "next-sanity"
 import { Poppins } from "next/font/google"
 // import { draftMode } from "next/headers";
 import { Suspense } from "react"
@@ -18,43 +18,45 @@ import Footer from "@/app/components/Footer"
 import DevTool from "@/app/components/DevTool"
 
 // import AlertBanner from "./alert-banner";
-// import PortableText from "./portable-text";
 
-// import * as demo from "@/sanity/lib/demo";
 import { sanityFetch } from "@/sanity/lib/fetch"
-import { layoutQuery } from "@/sanity/lib/queries"
-// import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+import { layoutQuery, settingsQuery } from "@/sanity/lib/queries"
+import { resolveOpenGraphImage } from "@/sanity/lib/utils"
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   const settings = await sanityFetch({
-//     query: layoutQuery,
-//     // Metadata should never contain stega
-//     stega: false,
-//   });
-//   const title = settings?.title || "";
-//   const description = settings?.description || "";
-//
-//   const ogImage = resolveOpenGraphImage(settings?.ogImage);
-//   let metadataBase: URL | undefined = undefined;
-//   try {
-//     metadataBase = settings?.ogImage?.metadataBase
-//         ? new URL(settings.ogImage.metadataBase)
-//         : undefined;
-//   } catch {
-//     // ignore
-//   }
-//   return {
-//     metadataBase,
-//     title: {
-//       template: `%s | ${title}`,
-//       default: title,
-//     },
-//     description: toPlainText(description),
-//     openGraph: {
-//       images: ogImage ? [ogImage] : [],
-//     },
-//   };
-// }
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await sanityFetch({
+    query: settingsQuery,
+    // Metadata should never contain stega
+    stega: false,
+  }) as Settings
+
+  const title = settings?.tab_title || ""
+  const description = settings?.meta_description || ""
+
+  const ogImage = resolveOpenGraphImage(settings?.ogImage)
+  let metadataBase: URL | undefined = undefined
+  try {
+    // @ts-ignore
+    metadataBase = settings?.ogImage?.metadataBase
+    // @ts-ignore
+      ? new URL(settings.ogImage.metadataBase)
+      : undefined
+  } catch {
+    // ignore
+  }
+  return {
+    metadataBase,
+    title: {
+      template: `%s | ${title}`,
+      default: title,
+    },
+    // description: toPlainText(description),
+    description,
+    openGraph: {
+      images: ogImage ? [ogImage] : [],
+    },
+  }
+}
 
 const poppins = Poppins({
   variable: "--font-poppins",

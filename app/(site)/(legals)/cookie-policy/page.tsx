@@ -1,7 +1,7 @@
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { cookieQuery } from "@/sanity/lib/queries"
 import { PortableTextBlock } from "next-sanity"
-import PortableText from "../portable-text"
+import PortableText from "@/app/components/PortableText"
 import Heading from "@/app/components/Heading"
 
 export default async function Page() {
