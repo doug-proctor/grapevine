@@ -12,8 +12,8 @@ export default {
     },
     colors: {
       accent: {
-        DEFAULT: "#7E0747",
-        hover: "#5e0435",
+        DEFAULT: "#187049",
+        hover: "#0b4f31",
       },
       award: {
         DEFAULT: "#FFB800",

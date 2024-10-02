@@ -1,10 +1,9 @@
-// import React from "react"
 import Image from "next/image"
 import Heading from "@/app/components/Heading"
 import { urlForImage } from "@/sanity/lib/utils"
 import Link from "@/app/components/Link"
-import BookingLink from "@/app/components/BookingLink"
 import GoogleMap from "@/app/components/GoogleMap"
+import InvisibleBookingForm from "@/app/components/InvisibleBookingForm"
 
 type Props = {
   image?: any;
@@ -43,7 +42,7 @@ export default function MediaItem({ children, mapApiKey, title, description, ima
             <>
               {description && <div className="mb-24 max-w-[500px] mx-auto">{description}</div>}
               {button && <Link href={button.href}>{button.text}</Link>}
-              {showBookingCta && <BookingLink />}
+              {showBookingCta && <InvisibleBookingForm showSubmitButton={true} />}
             </>
           )}
         </div>

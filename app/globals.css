@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+    color: theme('colors.accent.DEFAULT');
+
+    &:hover {
+        color: theme('colors.accent.hover');
+    }
+}
+
 .external-css-component_site-nav {
     animation: fadeIn;
     animation-duration: 0.2s;

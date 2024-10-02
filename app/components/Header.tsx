@@ -3,8 +3,13 @@
 import React from "react"
 import Link from "next/link"
 import Logo from "@/app/components/Logo"
+import InvisibleBookingForm from "@/app/components/InvisibleBookingForm"
 
 function Nav({ closeMenu }: { closeMenu: () => void }) {
+
+  const formRef = React.useRef<null | HTMLFormElement>(null)
+
+  const submitForm = () => formRef.current?.submit()
 
   return (
     <nav className="external-css-component_site-nav fixed top-64 bottom-0 left-0 right-0 bg-background z-50">
@@ -25,9 +30,10 @@ function Nav({ closeMenu }: { closeMenu: () => void }) {
           </Link>
         </li>
         <li>
-          <a className="inline-block text-accent hover:text-accent-hover transform hover:scale-175" href="https://google.com">Book now</a>
+          <a className="inline-block text-accent hover:text-accent-hover transform hover:scale-175" href="#" onClick={submitForm}>Book now</a>
         </li>
       </ul>
+      <InvisibleBookingForm ref={formRef} />
     </nav>
   )
 }

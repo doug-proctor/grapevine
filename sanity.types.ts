@@ -693,6 +693,25 @@ export type AmenitiesQueryResult = Array<{
   name: string | null;
   svg_icon: string | null;
 }>;
+// Variable: amenitiesFullQuery
+// Query: *[_type in ["amenity"] && promoted == true]{_id, name, description, picture}
+export type AmenitiesFullQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  description: string | null;
+  picture: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+}>;
 // Variable: settingsQuery
 // Query: *[_type in ["settings"]][0]
 export type SettingsQueryResult = {
@@ -846,6 +865,7 @@ declare module "@sanity/client" {
     "*[_type in [\"accommodation\"]][0]": AccommodationQueryResult;
     "*[_type in [\"testimonial\"]]{_id, name, picture, comment}": TestimonialsQueryResult;
     "*[_type in [\"amenity\"]][0..5]{_id, name, svg_icon}": AmenitiesQueryResult;
+    "*[_type in [\"amenity\"] && promoted == true]{_id, name, description, picture}": AmenitiesFullQueryResult;
     "*[_type in [\"settings\"]][0]": SettingsQueryResult;
     "*[_type in [\"privacy\"]][0]": PrivacyQueryResult;
     "*[_type in [\"cookie\"]][0]": CookieQueryResult;

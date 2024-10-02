@@ -4,13 +4,12 @@ import NextLink from "next/link"
 type Props = {
   size?: "default" | "large";
   children: React.ReactNode;
-  // onClick?: () => void;
   isSubmit?: boolean;
   href?: string;
 }
 
 export default function Link({ size, children, href, isSubmit }: Props) {
-  const baseClassNames = "inline-block bg-accent hover:bg-accent-hover text-content-inverted px-16 py-12 text-16 leading-24 rounded-4 font-medium transition-colors"
+  const baseClassNames = "inline-block bg-accent hover:bg-accent-hover text-content-inverted hover:text-content-inverted px-16 py-12 text-16 leading-24 rounded-4 font-medium transition-colors"
   let sizeClassNames = "px-16 py-12 text-16 leading-24"
 
   if (size === "large") {
