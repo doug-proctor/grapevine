@@ -15,24 +15,19 @@ export default async function Page() {
   return (
     <>
       <PageHeader image={accommodation?.picture} title={accommodation?.title} />
-
       {rooms.map((room, index) => (
         <MediaItem
+          link={{label: "Book now", href: process.env.NEXT_PUBLIC_BOOKING_URL! }}
           description={room.description}
           reverse={index % 2 !== 0}
-          showBookingCta={true}
           image={room.picture}
           title={room.type}
           key={room._id}
         />
       ))}
-
       <Amenities />
-
       <Testimonials />
-
       <Faqs />
-
       <Contact />
     </>
   )

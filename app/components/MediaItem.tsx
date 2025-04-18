@@ -7,50 +7,29 @@ type Props = {
   image?: any;
   title?: string;
   reverse?: boolean;
-  imageHref?: string;
   description?: string;
-  showBookingCta?: boolean;
-  children?: React.ReactNode;
-  button?: { href: string; text: string };
+  link?: { label: string; href: string };
 }
 
-export default function MediaItem({ children, title, description, image, imageHref, reverse, showBookingCta, button }: Props) {
+export default function MediaItem({ image, title, description, link, reverse }: Props) {
   const src = urlForImage(image)?.height(1000).width(2000).url() as string
 
   return (
-    <section className={`flex flex-col md:flex-row items-stretch overflow-hidden ${reverse && "md:flex-row-reverse"}`}>
-      <div className="relative overflow-hidden w-full h-[240px] md:h-auto">
-        {image && !imageHref && (
-          <Image
-            src={src}
-            width={1000}
-            height={800}
-            alt={image?.alt}
-            className="object-cover absolute top-0 bottom-0 left-0 right-0 h-full w-full x-z-10"
-          />
-        )}
-        {image && imageHref && (
-          <a href={imageHref} target="_blank" rel="noopener noreferrer">
-            <Image
-              src={src}
-              width={1000}
-              height={800}
-              alt={image?.alt}
-              className="object-cover absolute top-0 bottom-0 left-0 right-0 h-full w-full x-z-10"
-            />
-          </a>
-        )}
+    <section className={`flex flex-col gap-0 md:flex-row ${reverse && "md:flex-row-reverse"}`}>
+      <div className="basis-1/2 p-16 md:p-32">
+        <Image
+          src={src}
+          width={1000}
+          height={800}
+          alt={image?.alt}
+          className="object-cover h-full"
+        />
       </div>
-      <div className="w-full">
-        <div className="my-64 md:my-80 lg:my-96 mx-auto px-16 md:px-32 lg:px-64 text-center min-h-[250px]">
-          {title && <Heading level="h2" className="mb-8">{title}</Heading>}
-          {children ? children : (
-            <>
-              {description && <div className="mb-24 max-w-[500px] mx-auto">{description}</div>}
-              {button && <Link href={button.href}>{button.text}</Link>}
-              {showBookingCta && <Link href={process.env.NEXT_PUBLIC_BOOKING_URL!}>Book now</Link>}
-            </>
-          )}
+      <div className="basis-1/2 px-16 py-32 md:py-64 flex items-center">
+        <div className="max-w-[500px] mx-auto space-y-16 text-center">
+          {title && <Heading level="h2">{title}</Heading>}
+          {description && <div>{description}</div>}
+          {link && <Link href={link.href}>{link.label}</Link>}
         </div>
       </div>
     </section>

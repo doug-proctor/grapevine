@@ -15,23 +15,19 @@ export default async function Page() {
   return (
     <>
       <PageHeader image={about?.picture} title={about?.title} />
-
       {amenities.map((amenity, index) => (
         <MediaItem
-          description={amenity.description}
-          reverse={index % 2 !== 0}
+          key={amenity._id}
           image={amenity.picture}
           title={amenity.name}
-          key={amenity._id}
+          description={amenity.description}
+          link={{ label: "View rooms", href: "/accommodation" }}
+          reverse={index % 2 !== 0}
         />
       ))}
-
       <Amenities />
-
       <Testimonials />
-
       <Faqs />
-
       <Contact />
     </>
   )
