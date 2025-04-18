@@ -2,6 +2,9 @@ import { sanityFetch } from "@/sanity/lib/fetch"
 import { settingsQuery } from "@/sanity/lib/queries"
 import { type Settings } from "@/sanity.types"
 import MediaItem from "@/app/components/MediaItem"
+import {urlForImage} from "@/sanity/lib/utils"
+import Image from "next/image"
+import Heading from "@/app/components/Heading"
 
 function Icon({ icon, className }: { icon: string, className: string }) {
   switch (icon) {
@@ -45,41 +48,59 @@ function Icon({ icon, className }: { icon: string, className: string }) {
   }
 }
 
-export default async function Amenities() {
+export default async function Component() {
   const settings = await sanityFetch({query: settingsQuery}) as Settings
+  const map = settings.map
+  const src = urlForImage(map)?.height(1000).width(2000).url() as string
 
   return (
-    <MediaItem title="Connect with us" mapApiKey={settings.google_maps_api_key}>
-      <div className="mt-32 space-y-16">
-        <div>
-          <Icon icon="phone" className="inline relative -top-[2px] mr-[6px]"/>
-          {settings.phone}
-        </div>
-        <div>
-          <Icon icon="email"  className="inline relative -top-[2px] mr-[6px]" />
-          {settings.email}
-        </div>
-        <div>
-          <Icon icon="address"  className="inline relative -top-[2px] mr-[6px]" />
-          {settings.address}
-        </div>
-        {settings.instagram_url && (
-          <div>
-            <a href={settings.instagram_url} className="text-accent hover:text-accent-hover">
-              <Icon icon="instagram"  className="inline relative -top-[2px] mr-[6px]" />
-              Instagram
-            </a>
-          </div>
-        )}
-        {settings.facebook_url && (
-          <div>
-            <a href={settings.facebook_url} className="text-accent hover:text-accent-hover">
-              <Icon icon="facebook" className="inline relative -top-[2px] mr-[6px]"/>
-                Facebook
-            </a>
-          </div>
-        )}
+    <section className='flex flex-col md:flex-row items-stretch overflow-hidden'>
+      <div className="basis-1/2 p-32">
+        <a target="_blank" href="https://www.google.co.uk/maps/place/Grapevine+Hostel/@52.1410339,-10.2704671,17z/data=!4m9!3m8!1s0x484ffbc65da96223:0x8703328a8257721b!5m2!4m1!1i2!8m2!3d52.1410339!4d-10.2678922!16s%2Fg%2F11bbrmrzsh?entry=ttu&g_ep=EgoyMDI1MDQxNC4xIKXMDSoASAFQAw%3D%3D">
+          <Image
+            src={src}
+            width={1000}
+            height={800}
+            alt={map?.alt!}
+            className="object-cover h-full w-full"
+          />
+        </a>
       </div>
-    </MediaItem>
+      <div className="basis-1/2 px-16 py-32 flex items-center justify-between">
+        <div className="max-w-[500px] mx-auto text-center">
+          <div className="space-y-16">
+            <Heading level="h2" className="x">Find us</Heading>
+            <div>
+              <Icon icon="phone" className="inline relative -top-[2px] mr-[6px]"/>
+              {settings.phone}
+            </div>
+            <div>
+              <Icon icon="email" className="inline relative -top-[2px] mr-[6px]" />
+              {settings.email}
+            </div>
+            <div>
+              <Icon icon="address" className="inline relative -top-[2px] mr-[6px]" />
+              {settings.address}
+            </div>
+            {settings.instagram_url && (
+              <div>
+                <a href={settings.instagram_url} className="text-accent hover:text-accent-hover">
+                  <Icon icon="instagram" className="inline relative -top-[2px] mr-[6px]" />
+                    Instagram
+                </a>
+              </div>
+            )}
+            {settings.facebook_url && (
+              <div>
+                <a href={settings.facebook_url} className="text-accent hover:text-accent-hover">
+                  <Icon icon="facebook" className="inline relative -top-[2px] mr-[6px]"/>
+                    Facebook
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

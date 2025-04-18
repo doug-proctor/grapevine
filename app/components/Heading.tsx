@@ -7,6 +7,6 @@ export default function Heading({ level, className, children }: { level: "h1" | 
   }
 
   if (level === "h2") {
-    return <h2 className={`${className} text-24 md:text-32 font-bold`}>{children}</h2>
+    return <h2 className={`${className} text-24 lg:text-32 font-bold`}>{children}</h2>
   }
 }

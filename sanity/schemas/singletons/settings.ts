@@ -49,12 +49,6 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "google_maps_api_key",
-      title: "Google Maps API key",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "channel_manager_id",
       title: "Channel manager ID",
       type: "string",
@@ -73,6 +67,47 @@ export default defineType({
         "Used for the <title> description tag for SEO and the browser tab name",
       title: "Browser tab title",
       type: "string",
+    }),
+
+    defineField({
+      name: "map",
+      title: "Google Map screenshot",
+      type: "image",
+      description: "Used in the contact module",
+      options: {
+        hotspot: true,
+        aiAssist: {
+          imageDescriptionField: "alt",
+        },
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          description: "Important for accessibility and SEO.",
+          title: "Alternative text",
+          type: "string",
+          validation: (rule) => {
+            return rule.custom((alt, context) => {
+              if ((context.document?.ogImage as any)?.asset?._ref && !alt) {
+                return "Required"
+              }
+              return true
+            })
+          },
+        }),
+        // defineField({
+        //   name: "metadataBase",
+        //   type: "url",
+        //   description: (
+        //     <a
+        //       href="https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase"
+        //       rel="noreferrer noopener"
+        //     >
+        //       More information
+        //     </a>
+        //   ),
+        // }),
+      ],
     }),
 
     defineField({

@@ -4,7 +4,7 @@ import { accommodationQuery, aboutQuery, homeQuery } from "@/sanity/lib/queries"
 import Testimonials from "@/app/components/Testimonials"
 import PageHeader from "@/app/components/PageHeader"
 import Amenities from "@/app/components/Amenities"
-import MediaItem from "@/app/components/MediaItem"
+import MediaItem2 from "@/app/components/MediaItem2"
 import Contact from "@/app/components/Contact"
 import Faqs from "@/app/components/Faqs"
 
@@ -18,30 +18,24 @@ export default async function Page() {
       <PageHeader
         image={home?.picture}
         title={home?.title}
-        showRoomCta={true}
+        showCta={true}
       />
-
-      <MediaItem
-        title={accommodation?.title}
+      <MediaItem2
         image={accommodation?.picture}
+        title={accommodation?.title}
         description={accommodation?.description}
-        button={{ href: "accommodation", text: "View rooms" }}
+        link={{ label: "View rooms", href: "/accommodation" }}
       />
-
-      <MediaItem
-        title={about?.title}
+      <MediaItem2
+        reverse
         image={about?.picture}
+        title={about?.title}
         description={about?.description}
-        button={{ href: "info-and-amenities", text: "Info & amenities" }}
-        reverse={true}
+        link={{ label: "Info & amenities", href: "/info-and-amenities" }}
       />
-
       <Amenities />
-
       <Testimonials />
-
       <Faqs />
-
       <Contact />
     </>
   )

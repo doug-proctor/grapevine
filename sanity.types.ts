@@ -329,10 +329,21 @@ export type Settings = {
   instagram_url?: string;
   facebook_url?: string;
   ga_tracking_id?: string;
-  google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
   tab_title?: string;
+  map?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   ogImage?: {
     asset?: {
       _ref: string;
@@ -653,10 +664,21 @@ export type LayoutQueryResult = Array<{
   instagram_url?: string;
   facebook_url?: string;
   ga_tracking_id?: string;
-  google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
   tab_title?: string;
+  map?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   ogImage?: {
     asset?: {
       _ref: string;
@@ -753,10 +775,21 @@ export type SettingsQueryResult = {
   instagram_url?: string;
   facebook_url?: string;
   ga_tracking_id?: string;
-  google_maps_api_key?: string;
   channel_manager_id?: string;
   meta_description?: string;
   tab_title?: string;
+  map?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   ogImage?: {
     asset?: {
       _ref: string;

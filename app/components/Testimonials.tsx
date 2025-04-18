@@ -46,7 +46,7 @@ export default async function Amenities() {
   const testimonials = await sanityFetch({ query: testimonialsQuery }) as Testimonial[]
 
   return (
-    <section className="px-16 py-32 md:py-64 space-y-32 sm:space-y-16 md:space-y-0 bg-accent grid gap-16 md:gap-24 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <section className="px-16 py-32 md:py-64 space-y-32 sm:space-y-16 md:space-y-0 grid gap-16 md:gap-24 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {testimonials.map(testimonial => (
         <Testimonial
           comment={testimonial.comment}

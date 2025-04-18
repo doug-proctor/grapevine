@@ -25,7 +25,7 @@ export default {
       },
       background: {
         DEFAULT: "#FFFFFF",
-        secondary: "#F4F6FF",
+        secondary: "#e7f4e6",
         inverted: "#333333",
       }
     },
