@@ -1,6 +1,5 @@
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { accommodationQuery, aboutQuery, homeQuery } from "@/sanity/lib/queries"
-
 import Testimonials from "@/app/components/Testimonials"
 import PageHeader from "@/app/components/PageHeader"
 import Highlights from "@/app/components/Highlights"
