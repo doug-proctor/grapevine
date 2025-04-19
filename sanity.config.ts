@@ -27,6 +27,7 @@ import home from "@/sanity/schemas/singletons/home"
 
 // Document schemas
 import testimonial from "@/sanity/schemas/documents/testimonial"
+import highlight from "@/sanity/schemas/documents/highlight"
 import amenity from "@/sanity/schemas/documents/amenity"
 import author from "@/sanity/schemas/documents/author"
 import post from "@/sanity/schemas/documents/post"
@@ -59,6 +60,7 @@ export default defineConfig({
 
       // Documents
       testimonial,
+      highlight,
       amenity,
       author,
       room,

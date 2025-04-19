@@ -1018,10 +1018,10 @@
           "type": "string"
         }
       },
-      "promoted": {
+      "order": {
         "type": "objectAttribute",
         "value": {
-          "type": "boolean"
+          "type": "number"
         },
         "optional": true
       },
@@ -1033,13 +1033,6 @@
         "optional": true
       },
       "description": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "svg_icon": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -1112,6 +1105,57 @@
               }
             }
           }
+        },
+        "optional": true
+      }
+    }
+  },
+  {
+    "name": "highlight",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "highlight"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "name": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "svg_icon": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
         },
         "optional": true
       }

@@ -181,10 +181,9 @@ export type Amenity = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  promoted?: boolean;
+  order?: number;
   name?: string;
   description?: string;
-  svg_icon?: string;
   picture?: {
     asset?: {
       _ref: string;
@@ -197,6 +196,16 @@ export type Amenity = {
     alt?: string;
     _type: "image";
   };
+};
+
+export type Highlight = {
+  _id: string;
+  _type: "highlight";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  svg_icon?: string;
 };
 
 export type Testimonial = {
@@ -558,7 +567,7 @@ export type SanityAssistSchemaTypeField = {
   } & SanityAssistInstruction>;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Faq | Post | Slug | Room | Author | Amenity | Testimonial | Home | About | Cookie | Privacy | Settings | Accommodation | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Faq | Post | Slug | Room | Author | Amenity | Highlight | Testimonial | Home | About | Cookie | Privacy | Settings | Accommodation | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: layoutQuery
@@ -735,19 +744,17 @@ export type TestimonialsQueryResult = Array<{
   comment: string | null;
 }>;
 // Variable: amenitiesQuery
-// Query: *[_type in ["amenity"]][0..5]{_id, name, svg_icon}
+// Query: *[_type in ["amenity"] | order(name desc)]
 export type AmenitiesQueryResult = Array<{
   _id: string;
-  name: string | null;
-  svg_icon: string | null;
-}>;
-// Variable: amenitiesFullQuery
-// Query: *[_type in ["amenity"] && promoted == true]{_id, name, description, picture}
-export type AmenitiesFullQueryResult = Array<{
-  _id: string;
-  name: string | null;
-  description: string | null;
-  picture: {
+  _type: "amenity";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  order?: number;
+  name?: string;
+  description?: string;
+  picture?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -758,7 +765,18 @@ export type AmenitiesFullQueryResult = Array<{
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
-  } | null;
+  };
+}>;
+// Variable: highlightsQuery
+// Query: *[_type in ["highlight"]]
+export type HighlightsQueryResult = Array<{
+  _id: string;
+  _type: "highlight";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  svg_icon?: string;
 }>;
 // Variable: settingsQuery
 // Query: *[_type in ["settings"]][0]
@@ -936,8 +954,8 @@ declare module "@sanity/client" {
     "*[_type in [\"settings\", \"cookie\", \"privacy\", \"accommodation\", \"about\"]]": LayoutQueryResult;
     "*[_type in [\"accommodation\"]][0]": AccommodationQueryResult;
     "*[_type in [\"testimonial\"]]{_id, name, picture, comment}": TestimonialsQueryResult;
-    "*[_type in [\"amenity\"]][0..5]{_id, name, svg_icon}": AmenitiesQueryResult;
-    "*[_type in [\"amenity\"] && promoted == true]{_id, name, description, picture}": AmenitiesFullQueryResult;
+    "*[_type in [\"amenity\"] | order(name desc)]": AmenitiesQueryResult;
+    "*[_type in [\"highlight\"]]": HighlightsQueryResult;
     "*[_type in [\"settings\"]][0]": SettingsQueryResult;
     "*[_type in [\"privacy\"]][0]": PrivacyQueryResult;
     "*[_type in [\"cookie\"]][0]": CookieQueryResult;

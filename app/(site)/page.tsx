@@ -3,7 +3,7 @@ import { accommodationQuery, aboutQuery, homeQuery } from "@/sanity/lib/queries"
 
 import Testimonials from "@/app/components/Testimonials"
 import PageHeader from "@/app/components/PageHeader"
-import Amenities from "@/app/components/Amenities"
+import Highlights from "@/app/components/Highlights"
 import MediaItem from "@/app/components/MediaItem"
 import Contact from "@/app/components/Contact"
 import Faqs from "@/app/components/Faqs"
@@ -33,7 +33,7 @@ export default async function Page() {
         description={about?.description}
         link={{ label: "Info & amenities", href: "/info-and-amenities" }}
       />
-      <Amenities />
+      <Highlights />
       <Testimonials />
       <Faqs />
       <Contact />

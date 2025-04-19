@@ -8,10 +8,9 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-      name: "promoted",
-      title: "Promoted",
-      type: "boolean",
-      initialValue: false,
+      name: "order",
+      title: "Sort order",
+      type: "number",
     }),
     defineField({
       name: "name",
@@ -22,12 +21,6 @@ export default defineType({
     defineField({
       name: "description",
       title: "Description",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "svg_icon",
-      title: "SVG icon",
       type: "string",
       validation: (rule) => rule.required(),
     }),

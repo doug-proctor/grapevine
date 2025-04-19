@@ -4,7 +4,7 @@ import { type Room } from "@/sanity.types"
 import Testimonials from "@/app/components/Testimonials"
 import PageHeader from "@/app/components/PageHeader"
 import MediaItem from "@/app/components/MediaItem"
-import Amenities from "@/app/components/Amenities"
+import Highlights from "@/app/components/Highlights"
 import Contact from "@/app/components/Contact"
 import Faqs from "@/app/components/Faqs"
 
@@ -25,7 +25,7 @@ export default async function Page() {
           key={room._id}
         />
       ))}
-      <Amenities />
+      <Highlights />
       <Testimonials />
       <Faqs />
       <Contact />
